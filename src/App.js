@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Link } from "react-router-dom";
-import {HashRouter as Router, Route, Routes} from "react-router-dom"
-import { BrowserRouter } from 'react-router-dom'
+
 
 
 
@@ -58,21 +56,22 @@ function App() {
     <div className="App">
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='item'>New item</label>
-          <input value={newitem} onChange={e => setNewitem(e.target.value)} type='text' id='item'></input>
-          <button>add</button>
+          <div class="input-group input-group-lg">
+            <input required placeholder='Add Item' class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value={newitem} onChange={e => setNewitem(e.target.value)} type='text' id='item'></input><n/>
+            <button class="btn btn-light">add</button>
+          </div>
         </div>
       </form>
-      <h1>todo list</h1>
-      <ul>
-        {todo.length == 0 && "notodos"}
+      <h1 class="display-1">todo list</h1>
+      <ul class="list-group list-group-flush">
+        {todo.length == 0 && "No Todos"}
         {todo.map(todo =>{
           return(
-            <li key={todo.title}>
-              <label>
-                <input type='checkbox' checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)}></input>{todo.title}
+            <li class="list-group-item" key={todo.title}>
+              <label class="display-3">
+                <input class="form-check-input float-left position-absolute top-0 start-0"  type='checkbox' checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)}></input>{todo.title}
               </label>
-              <button onClick={() =>del(todo.id)}>delete</button>
+              <button class="btn btn-danger btn-lg  text-center float-left position-absolute top-0 end-0" onClick={() =>del(todo.id)}>delete</button>
             </li>
         )})}
       </ul>
