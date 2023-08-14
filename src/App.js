@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
 
-  const[newitem, setNewitem]= new Set(useState(""))
+  const[newitem, setNewitem] = useState("")
 
   const[todo, setTodo]= useState(()=>{
     const localValue = localStorage.getItem("ITEMS")
@@ -57,17 +57,20 @@ function App() {
     })
   }
 
+
+/* // NO DUPLICATES FUNCTION
   function ra(){
       var ul = document.getElementById("foo");
       var items = ul.getElementsByTagName("li");
         for (var i = 0; i < items.length; ++i) {
           console.log(items[i].innerHTML.split(""))
-          if(newitem == items[i].innerHTML.split("")[148] ){  
-            return items[i].remove()   
-        }
+          if(newitem == items[i].innerHTML.split("")[148]){  
+              items[i].remove();
+          }
+          
         
       }
-    }
+    }*/
 
 
   
@@ -78,20 +81,20 @@ function App() {
         <div>
           <div class="input-group input-group-lg">
             <input required placeholder='Add Item' className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value={newitem} onChange={e => setNewitem(e.target.value)} type='text' id='item'></input><n/>
-            <button onClick={ra} class="btn btn-light">add</button>
+            <button class="btn btn-light">add</button>
           </div>
         </div>
       </form>
-      <h1 class="display-1">todo list</h1>
+      <h1 class="display-1" style={{fontSize:"10rem"}}>to do list</h1>
       <ul id='foo' class="list-group list-group-flush">
-        {todo.length == 0 && "No Todos"}
+        {todo.length === 0 && "No Todos"}
         {todo.map(todo =>{
           return (
             <li class="list-group-item" key={todo.title}>
               <label  id='cv' class="display-3">
                 <input name='checkbox'  id='cb' className="form-check-input float-left position-absolute top-0 start-0"  type='checkbox' checked={todo.completed} onChange={e =>toggleTodo(todo.id, e.target.checked) }></input>{todo.title}
               </label>
-              <button class="btn btn-danger btn-lg  text-center float-left position-absolute top-0 end-0" onClick={() =>del(todo.id)}>delete</button>
+              <button style={{display:"flex", alignItems:"center"}} class="btn btn-danger btn-lg  text-center float-left position-absolute top-0 end-0" onClick={() =>del(todo.id)}>delete</button>
             </li>
         )})}
       </ul>
