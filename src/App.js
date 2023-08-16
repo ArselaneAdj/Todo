@@ -80,7 +80,7 @@ function App() {
       <form onSubmit={handleSubmit}>
         <div>
           <div class="input-group input-group-lg">
-            <input required placeholder='Add Item' className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value={newitem} onChange={e => setNewitem(e.target.value)} type='text' id='item'></input><n/>
+            <input autofocus required placeholder='Add Item...' className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value={newitem} onChange={e => setNewitem(e.target.value)} type='text' id='item'></input><n/>
             <button class="btn btn-light">add</button>
           </div>
         </div>
